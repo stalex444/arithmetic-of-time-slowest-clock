@@ -1,0 +1,19 @@
+{
+  "challenge_module": "Challenge",
+  "solution_module": "Solution",
+  "theorem_names": [
+    "ArithmeticOfTime.padovan_minimal_unique",
+    "ArithmeticOfTime.padovan_eigenvalue_unique",
+    "ArithmeticOfTime.padovan_matrix_unique",
+    "ArithmeticOfTime.pisot_ge_plastic",
+    "ArithmeticOfTime.padovan_rules_chiral"
+  ],
+  "definition_names": [
+    "ArithmeticOfTime.s",
+    "ArithmeticOfTime.mir",
+    "ArithmeticOfTime.inc",
+    "ArithmeticOfTime.sub"
+  ],
+  "permitted_axioms": ["propext", "Quot.sound", "Classical.choice"],
+  "enable_nanoda": true
+}

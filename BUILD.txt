@@ -1,0 +1,192 @@
+BUILD RECORD — arithmetic-of-time-slowest-clock (new entry; companion of PALOMAR-2026-08-19-000006)
+Recorded 2026-10-18 (re-recorded after review edits; first recorded 2026-10-17).
+
+Toolchain: leanprover/lean4:v4.35.0-rc2 (lean-toolchain)
+  lean --version: Lean (version 4.35.0-rc2, arm64-apple-darwin24.6.0, commit 11acb17ec6b07a8f9e9173e6845197929540936b, Release)
+  lake --version: Lake version 5.0.0-src+11acb17 (Lean version 4.35.0-rc2)
+Mathlib: git = "https://github.com/leanprover-community/mathlib4.git", rev = "065356127b1dc0016f66b7283ce0ce2c4055aa55"
+  (lakefile.toml, git form, no scope; lake-manifest.json records the same rev and the pinned dependency
+  revisions plausible e5094829, LeanSearchClient 95e037bf, importGraph 10930f81, proofwidgets 4c70ac05,
+  aesop 75d936c7, Qq 786b7acd, batteries ed9b316a, Cli 2842b987). lake-manifest.json is the one of the
+  author's unpublished working package with the package name field changed to
+  arithmetic_of_time_slowest_clock; nothing else differs.
+
+Build
+  Command: lake build (from the package root; .lake/packages is a link to a prebuilt checkout of the pinned
+    Mathlib and its dependencies, so Mathlib was not rebuilt; this package's .lake/build was empty).
+  Result: "Build completed successfully (8962 jobs)." exit 0; 2026-10-18 08:26:45 to 08:31:43 EDT.
+    After a later docstring-only edit to Challenge.lean, an incremental lake build rebuilt Challenge and
+    replayed the rest: "Build completed successfully (8962 jobs)." exit 0, the same 42 warnings.
+  Modules built (16, all default targets): Challenge, Solution, Supplement, DefinitionAudit, SlowestClock,
+    Chirality, PdtMirrorTensor, Irreducibility, Settling, PdtMahler, PdtMahlerBox, PdtMahlerMain,
+    PdtMahlerTheta, PdtMahlerWindow, PdtPisotBoundary, PdtIrreducible. Slowest: PdtMahlerBox 238 s (87 s on
+    the first, less loaded run of 2026-10-17).
+  Warnings: 42.
+    5  "declaration uses `sorry`" — Challenge.lean, one per compared theorem (the intended placeholders).
+    37 linter or deprecation warnings in copied proof modules, none an error and none in Challenge,
+       Solution, Supplement or DefinitionAudit: 21 "`push_neg` has been deprecated" (PdtMahlerMain,
+       PdtMahlerTheta, PdtMahlerWindow), 13 "This simp argument is unused" (PdtMahler, PdtMahlerMain,
+       PdtMahlerWindow, SlowestClock), 2 "Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice"
+       (SlowestClock), 1 "Variable name `h1` is not explicitly referenced" (PdtMahlerWindow).
+    By module: Challenge 5, PdtMahler 2, PdtMahlerMain 4, PdtMahlerTheta 8, PdtMahlerWindow 20, SlowestClock 3.
+
+Axioms (#print axioms; the five compared theorems are printed in-build at the end of Solution.lean, and
+all of the following were printed again by `lake env lean` on a file importing Solution, Supplement and
+DefinitionAudit; permitted set: propext, Classical.choice, Quot.sound)
+  Compared:
+    ArithmeticOfTime.padovan_minimal_unique      [propext, Classical.choice, Quot.sound]
+    ArithmeticOfTime.padovan_eigenvalue_unique   [propext, Classical.choice, Quot.sound]
+    ArithmeticOfTime.padovan_matrix_unique       [propext, Classical.choice, Quot.sound]
+    ArithmeticOfTime.pisot_ge_plastic            [propext, Classical.choice, Quot.sound]
+    ArithmeticOfTime.padovan_rules_chiral        [propext, Classical.choice, Quot.sound]
+  Supplement (proved, not compared):
+    ArithmeticOfTime.padovan_pisot_eigenvalue    [propext, Classical.choice, Quot.sound]
+  DefinitionAudit (25 theorems, not compared):
+    charpoly_eq_det                      [propext, Classical.choice, Quot.sound]
+    charmatrix_eq                        [propext, Classical.choice, Quot.sound]
+    eval_charpoly                        [propext, Classical.choice, Quot.sound]
+    aeval_eq_eval₂                       [propext, Classical.choice, Quot.sound]
+    aeval_charpoly_eq_zero_iff           [propext, Classical.choice, Quot.sound]
+    isIntegral_iff                       [propext, Classical.choice, Quot.sound]
+    isIntegral_of_aeval_charpoly         [propext, Classical.choice, Quot.sound]
+    minpoly_eq_zero_of_not_isIntegral    [propext, Classical.choice, Quot.sound]
+    minpoly_spec                         [propext, Classical.choice, Quot.sound]
+    minpoly_eq_map_minpoly_int           [propext, Classical.choice, Quot.sound]
+    natDegree_minpoly_eq_finrank         [propext, Classical.choice, Quot.sound]
+    mem_aroots_minpoly                   [propext, Classical.choice, Quot.sound]
+    self_mem_aroots_minpoly              [propext, Classical.choice, Quot.sound]
+    aroots_minpoly_nodup                 [propext, Classical.choice, Quot.sound]
+    card_aroots_minpoly                  [propext, Classical.choice, Quot.sound]
+    complex_norm_eq                      [propext, Classical.choice, Quot.sound]
+    complex_norm_lt_one_iff              [propext, Classical.choice, Quot.sound]
+    plastic_exists_unique                [propext, Classical.choice, Quot.sound]
+    plastic_gt_one                       [propext, Classical.choice, Quot.sound]
+    padovan_matrix_eq_count              [propext, Classical.choice, Quot.sound]
+    padovan_matrix_charpoly              [propext, Classical.choice, Quot.sound]
+    iterate_zero_apply                   (no axioms)
+    iterate_succ_apply'                  [propext, Quot.sound]
+    isInfix_iff                          (no axioms)
+    count_eq_length_filter               [propext]
+  All within the permitted set.
+
+Sorry and other tokens
+  sorry: Challenge.lean has 5 `sorry` placeholders (one per compared theorem; the token also occurs once in
+    its opening docstring); every other .lean file 0. admit 0, native_decide 0, axiom declarations 0, in
+    every file.
+  Challenge.lean imports: public import Mathlib (only). DefinitionAudit.lean imports: public import Mathlib (only).
+  Module-system header (strict check: optional ordinary comments, then `module`, `public import ...` lines,
+    a blank line, `@[expose] public section`): 16/16 .lean files.
+
+Statement identity, Challenge vs Solution (5 theorems + 4 definitions: s, mir, inc, sub)
+  Whitespace-normalised source text (comments stripped; theorem statements up to `:=`, definitions in
+    full): 9/9 identical.
+  Kernel terms: the public ArithmeticOfTime constants of a file importing only Challenge and of one
+    importing only Solution were dumped (type for theorems; type and value for definitions). The 11
+    constants of Challenge (the 5 theorems, s, mir, inc, sub and the compiler-generated s.match_1 and
+    s._proof_1) are identical to Solution's, once the module name inside hygienic binder names is
+    normalised. Solution has, in addition, the equation lemma sub.eq_1, generated automatically when its
+    proof unfolds `sub`. Re-run on 2026-10-18 after the docstring edits (the 5 theorems, s, s.match_1,
+    mir, inc, sub): identical.
+  Count gate: the Challenge docstring says "exactly these five" and enumerates items 1-5; comparator.json
+    has 5 theorem_names; Challenge.lean has 5 theorems, declared in comparator order; definition_names
+    {s, mir, inc, sub} = the definitions of Challenge.lean; formalization.yaml alignment lists the same 5
+    names in comparator order.
+  Verbatim copy of the compared surface from the author's unpublished working package: s, mir, inc and
+    padovan_minimal_unique, padovan_eigenvalue_unique, padovan_matrix_unique, pisot_ge_plastic from its
+    Challenge.lean; sub and padovan_rules_chiral from its Supplement.lean. Whitespace-normalised: 9/9
+    identical. One docstring differs: the docstring of `sub` drops the source's closing clause
+    "(for `σ = s` this is `S`)", because `S` is not defined in this package.
+
+Module provenance (every proof module is copied from the author's unpublished working package;
+"unchanged" = byte-identical to it)
+  Chirality.lean        unchanged. = registered companion revision c48eb12 + module-system header.
+  Irreducibility.lean   unchanged. = c48eb12 + header + one proof repair in quartic_irred_zmod2 (the simp
+                        call no longer closes the linear case at this toolchain; it drops neg_add_cancel and
+                        zero_mul and is followed by `exact mul_eq_zero_of_left (neg_add_cancel a) _`);
+                        statement unchanged.
+  Settling.lean         unchanged. = c48eb12 + header.
+  SlowestClock.lean     unchanged. In neither registered entry.
+  PdtMirrorTensor.lean  EDITED (comments only) in this package. In neither registered entry. The opening
+                        comment block, two section headings and three docstrings (OneWay, not_oneWay_both,
+                        not_oneWayAt_both) were rewritten to describe the file's own theorems; they had
+                        referred to a computation outside this repository. With comments stripped and
+                        whitespace normalised, the file is identical to the working package's file.
+  PdtMahlerBox.lean     unchanged. = mahler-measure-minima ca3df22 + header.
+  PdtPisotBoundary.lean unchanged. = ca3df22 + header.
+  PdtIrreducible.lean   unchanged. = ca3df22 + header + the same proof repair in quartic_irred_zmod2.
+  PdtMahler.lean, PdtMahlerMain.lean, PdtMahlerTheta.lean
+                        unchanged. = ca3df22 + header + docstring/comment edits (internal cross-references
+                        removed); no statement or proof changed.
+  PdtMahlerWindow.lean  EDITED (docstring only) in this package: the section heading at line 1366 lost its
+                        second line, a parenthetical pointer to an internal review note; it now reads
+                          /-! ### The minimizers are in the competitor class: irreducibility -/
+                        Otherwise = the working package's file, which is ca3df22 + header + docstring edits
+                        (internal cross-references removed).
+  Each comparison above was made with diff against the working package, against stalex444/arithmetic-of-time
+  at c48eb12 and stalex444/mahler-measure-minima at ca3df22; the only non-header, non-comment differences
+  from the registered revisions are the two quartic_irred_zmod2 repairs (in each, the simp step
+  `simp only [eval_add, eval_X, eval_C, neg_add_cancel, zero_mul]` becomes `simp only [eval_add, eval_X,
+  eval_C]` followed by `exact mul_eq_zero_of_left (neg_add_cancel a) _`).
+  Written for this entry: Challenge.lean, Solution.lean (direct transfers from Time.Clock.slowest_clock,
+  clock_unique, matrix_unique, pisot_ge_rho, Time.Padovan.ac_not_factor and PdtMirror.iterate_mir_seed),
+  Supplement.lean (padovan_pisot_eigenvalue: the bound of statement 1 is attained), DefinitionAudit.lean,
+  comparator.json, lakefile.toml, README.md, formalization.yaml, MATHLIB_DEFINITIONS.md, this file.
+  Copied: LICENSE (from the working package, byte-identical), lean-toolchain (byte-identical),
+  .gitignore ("/.lake"), .github/workflows/palomar-preflight.yml (from triangle-group-growth; only
+  request_id changed, to slowclock001).
+  Not copied: every other module of the working package (not in the import closure of the five theorems).
+
+Imported definitions (MATHLIB_DEFINITIONS.md)
+  14 excerpts (12 from Mathlib at 065356127b1d..., 2 from core Lean at 11acb17ec6b0..., the commit of the
+  v4.35.0-rc2 toolchain). Each excerpt was checked byte for byte, by script, against the stated lines of
+  (a) the local pinned Mathlib checkout and the v4.35.0-rc2 toolchain source tree and (b) the file fetched
+  from raw.githubusercontent.com at the pinned commit; each permalink was checked to name the same path
+  and line range at the pinned commit. 14/14 identical (re-fetched 2026-10-18); every fetched file is also
+  byte-identical to the local pinned copy. Section 2 also cites two single lines that bind the section
+  variables of its excerpts (Eval/Defs.lean line 53, AlgebraMap.lean line 241), with permalinks; both were
+  checked against the fetched files and the local pinned copy.
+  Every DefinitionAudit name cited in README.md, formalization.yaml, Challenge.lean, DefinitionAudit.lean
+  and MATHLIB_DEFINITIONS.md is a theorem of DefinitionAudit.lean; every ArithmeticOfTime.*, Time.*, PDT.*
+  and PdtMirror.* name cited in the docstrings, README.md, formalization.yaml and this file resolves
+  (#check, 64 of 66), except Time.aperiodic and Time.balanced, which the verbatim Scope paragraph cites
+  and which are in MechanicalWord.lean of the companion repository at c48eb12, as the README says.
+  formalization.yaml parses and validates against the published formalization.yaml v0.4 schema (0 errors).
+
+Package checks (2026-10-18)
+  Paths: every local file path cited in README.md, formalization.yaml, MATHLIB_DEFINITIONS.md and
+    Challenge.lean exists in the package, except MechanicalWord.lean, OriginDefect.lean and the paper
+    directory, which README.md names as files of the companion repository and links at c48eb12.
+  Scope: the README's Scope paragraph is byte-identical to the companion README's at c48eb12, except that
+    its relative link ./paper is replaced by the permalink of that directory at c48eb12.
+  Internal pointers: a grep for the author's internal cross-reference markers over every shipped file
+    finds none.
+  Order: comparator.json theorem_names, the Challenge docstring's list, the Challenge declarations and the
+    formalization.yaml alignment list name the same five theorems in the same order.
+
+FILES (sha256  lines  path; every file of the package except this one and the untracked .lake/)
+  fb530285c817717549a2bec0df1bfaa6639805d7046dcc19ca3d4e027a6a5404     24  .github/workflows/palomar-preflight.yml
+  b3ad09fc93f83fdbd0bee771258dd4a58d3798fd7e6048611dde5a804bb43f1e      1  .gitignore
+  57e79774f1d0e023d56384768001c5cd060d4a783dca90a9e80dc93e7d13ead4    169  Challenge.lean
+  cbb789f7d94cc8626c7b7f7aa5580bcb5948ba8737f1f8b5faae5b1f3e11b59a    551  Chirality.lean
+  cb88fdffc5056f1f20a607dac61223bc77e1fb041368dfbf52a093845244ef67    215  DefinitionAudit.lean
+  c2b5bc3c5a753e9c292f1fd8ed3525cc931ba6965e1ec4854e9fc8a3978a26b7    206  Irreducibility.lean
+  d32be532ae3b0129081943d5ba0140833d203720b69e21bc64c735160db351cb     21  LICENSE
+  51d0b70ae779a63102e4d72407c16db88f707c417f89343403550ed9d8d6f299    232  MATHLIB_DEFINITIONS.md
+  806b281ce038dccf07fb7602e5352a2581af1f6b077621a7de8bd6c8bad54423    221  PdtIrreducible.lean
+  cce0248dd13b2c8aa1a8575f1daec16852145b8dcd2735f25489539f579de7bb    547  PdtMahler.lean
+  1c2c6e76093fcdf85a9cf9d164739245e7498db0b1e80b32e2da87c8b6baceb2     79  PdtMahlerBox.lean
+  529beff48aadc9ee83c36a9be7bedb7db638312a7e34663883eb2a4853fe2ec1    346  PdtMahlerMain.lean
+  50779a848151ff43f7436170436d9a3ff2ebdada891b26fb28e17e875875e2d7    300  PdtMahlerTheta.lean
+  e9a9bc5017b6d70aca00c5e2dfa6e2d9e089431dd402dfd857e165128d526dbc   1402  PdtMahlerWindow.lean
+  91490e9f2774b0fa74ff550aa7859aad0d405629a2883727832e5c130d835dd1    183  PdtMirrorTensor.lean
+  114cd38680235823481453a449f104c724777d535f60a0867c888ee25086ad98    154  PdtPisotBoundary.lean
+  b59c2e4e0f45e758112140f29096902cc79c0811038918752f1632a5da481a34    216  README.md
+  9984a27730f4a6067131a8d69388f8163f7fa45502dac4006a7c162351329893    425  Settling.lean
+  0e1715b111d4fa138c9a755e69584f511b8ffa0e1f2a08d2035607335d32011d    402  SlowestClock.lean
+  405dd8dcda5ede56978ef195724c9a2d7537a0d71b7b72a9847a351c1581dc87    183  Solution.lean
+  4da6331e1a72f62d704c7e0339a19f39329ac6adb780b70b15d1749d48ed4665     65  Supplement.lean
+  63fcafd4b7d08626d3c39e6d950db68a9e479f5bc16ee269b548905aa1eb8577     19  comparator.json
+  2eadefe499ee1a100651232923303df80d3456da3b400378839a829b47b5192e    371  formalization.yaml
+  419e525433fafffd9915dbdf955430f7f7a5f207306a5f118c4ce987ff4b2749    117  lake-manifest.json
+  624cbb9b008ff34c0270bbc39d093cdb17d8573c7c6e5a3d8dfe124105ac8326     55  lakefile.toml
+  8dc8d6f560141069d9073e370611716ef77ada0da8ffa37e2149f44b2e63ac7a      1  lean-toolchain

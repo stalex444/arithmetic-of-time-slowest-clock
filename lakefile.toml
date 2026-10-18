@@ -1,0 +1,55 @@
+name = "arithmetic_of_time_slowest_clock"
+defaultTargets = ["Challenge", "Solution", "DefinitionAudit", "Supplement", "SlowestClock", "Chirality", "PdtMirrorTensor", "Irreducibility", "Settling", "PdtMahler", "PdtMahlerBox", "PdtMahlerMain", "PdtMahlerTheta", "PdtMahlerWindow", "PdtPisotBoundary", "PdtIrreducible"]
+
+[[require]]
+name = "mathlib"
+git = "https://github.com/leanprover-community/mathlib4.git"
+rev = "065356127b1dc0016f66b7283ce0ce2c4055aa55"
+
+[[lean_lib]]
+name = "Challenge"
+
+[[lean_lib]]
+name = "Solution"
+
+[[lean_lib]]
+name = "DefinitionAudit"
+
+[[lean_lib]]
+name = "Supplement"
+
+[[lean_lib]]
+name = "SlowestClock"
+
+[[lean_lib]]
+name = "Chirality"
+
+[[lean_lib]]
+name = "PdtMirrorTensor"
+
+[[lean_lib]]
+name = "Irreducibility"
+
+[[lean_lib]]
+name = "Settling"
+
+[[lean_lib]]
+name = "PdtMahler"
+
+[[lean_lib]]
+name = "PdtMahlerBox"
+
+[[lean_lib]]
+name = "PdtMahlerMain"
+
+[[lean_lib]]
+name = "PdtMahlerTheta"
+
+[[lean_lib]]
+name = "PdtMahlerWindow"
+
+[[lean_lib]]
+name = "PdtPisotBoundary"
+
+[[lean_lib]]
+name = "PdtIrreducible"

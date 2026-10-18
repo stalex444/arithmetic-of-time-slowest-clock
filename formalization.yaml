@@ -1,0 +1,371 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/mathlib-initiative/formalization.yaml/main/schema/formalization.schema.json
+# A new entry, the companion of the registered entry PALOMAR-2026-08-19-000006
+# (stalex444/arithmetic-of-time); not a revision of it.
+version: "v0.4"
+
+project:
+  name: "The Arithmetic of Time: the slowest settling clock on at most three letters is the Padovan substitution, unique up to mirror image, and both minimal rules are chiral"
+  description: >-
+    Five compared theorems. Among all substitutions on at most three
+    letters whose incidence matrix has a Pisot eigenvalue θ > 1, the
+    least such θ is the plastic number ρ, the real root of x³ = x + 1,
+    attained only by the Padovan rule a ↦ b, b ↦ c, c ↦ ab and its
+    mirror c ↦ ba, up to renaming the letters; both minimal rules are
+    chiral, in opposite directions. Precisely: (1) for a substitution
+    σ on k ≤ 3 letters (images may be empty) and a real eigenvalue
+    θ > 1 of its integer incidence matrix that is a Pisot number,
+    ρ ≤ θ, and θ = ρ exactly when, after renaming the letters, σ is the
+    Padovan rule or its mirror; no primitivity or unit hypothesis;
+    (2) the same classification for every real eigenvalue, with no
+    Pisot hypothesis; (3) a 3 × 3 natural matrix with characteristic
+    polynomial x³ − x − 1 is the Padovan matrix after one simultaneous
+    permutation of rows and columns; (4) Siegel's bound ρ ≤ θ for
+    Pisot numbers of degree at most three (Siegel 1944, restricted;
+    not new; proved through the minimal Mahler measures of registered
+    entry PALOMAR-2026-08-31-000004); (5) under the Padovan rule the
+    word ca is a factor of the fifth iterate from the seed a, and ac is
+    a factor of no iterate from any seed; under its mirror, the
+    reverse. The uniqueness was stated without proof by Mercat (2020)
+    for substitutions on three letters; the contribution is a
+    kernel-checked proof of the combined statement, for every real
+    eigenvalue and with no primitivity, unit or non-erasing hypothesis
+    (in the equality case these are consequences: θ = ρ forces k = 3
+    and characteristic polynomial x³ − x − 1), together with the
+    chirality of both minimal rules. No first-formalization claim is
+    made. That ρ itself is a Pisot eigenvalue of the Padovan matrix,
+    so that the bound is attained, is proved in Supplement.lean and
+    not compared. Companion of registered entry
+    PALOMAR-2026-08-19-000006.
+  authors:
+    - "Stephanie Alexander"
+  license: "MIT"
+  responsible_maintainers:
+    - "Stephanie Alexander"
+
+classification:
+  # math.CO / 68R15 and math.DS / 37B10: substitutions, their factor
+  # languages and incidence matrices (statements 1, 2, 3, 5). math.NT /
+  # 11R06: Pisot numbers (statements 1 and 4). physics.hist-ph / 00A79
+  # because the narrative states the physical application: the Scope
+  # section of the README, shared verbatim with the companion entry,
+  # identifies physical time with this arithmetic, and states that as an
+  # identification, not as a theorem. No compared statement is a physical
+  # claim, and no gravity claim is made.
+  arxiv: ["math.CO", "math.NT", "math.DS", "physics.hist-ph"]
+  msc2020: ["68R15", "11R06", "37B10", "00A79"]
+
+sources:
+  - title: "Algebraic integers whose conjugates lie in the unit circle"
+    authors:
+      - "Carl Ludwig Siegel"
+    id: "Duke Mathematical Journal 11 (1944), 597-602"
+    type: "article"
+    location: "https://doi.org/10.1215/S0012-7094-44-01152-X"
+    relationship: "independently-proves"
+    note: >-
+      Siegel proved that the real root ρ of x³ − x − 1 is the smallest
+      Pisot number, in every degree. Compared statement 4
+      (pisot_ge_plastic) is the restriction of that theorem to Pisot
+      numbers of degree at most 3, proved here by a different route: a
+      Pisot number equals the Mahler measure of its minimal polynomial
+      (Time.Clock.mahler_eq_of_pisot), and the minimal Mahler measures in
+      degrees 2 and 3 of registered entry PALOMAR-2026-08-31-000004 bound
+      that measure below by the golden ratio and by ρ. The result is not
+      new. The bound ρ ≤ θ of statement 1 is this statement applied to an
+      eigenvalue.
+    license: "unknown"
+    author_endorsement: "n/a"
+  - title: "Rauzy Fractal of the Smallest Substitution Associated with the Smallest Pisot Number"
+    authors:
+      - "Paul Mercat"
+    id: "Experimental Mathematics 29 (2020), 163-182"
+    type: "article"
+    location: "https://doi.org/10.1080/10586458.2018.1446063"
+    relationship: "independently-proves"
+    note: >-
+      Section 1 observes, without proof, that up to a permutation of the
+      letters the Padovan substitution and its reversal are the only
+      substitutions on three letters associated with the smallest Pisot
+      number. The equality case of compared statements 1 and 2 (θ = ρ
+      exactly for the Padovan rule and its mirror, after renaming) proves
+      that observation here, independently. The statement takes θ to be
+      any real eigenvalue of the incidence matrix, allows every alphabet
+      size k ≤ 3 (the "minimal number of letters" of the abstract of
+      Mercat's preprint, https://www.i2m.univ-amu.fr/perso/paul.mercat/Recherche/SmallestPisotSubstitution.pdf), and
+      assumes no primitivity, unit or non-erasing property; in the
+      equality case each of these is a consequence. The proof
+      classifies the 3 × 3 natural matrices with characteristic polynomial
+      x³ − x − 1 (statement 3) and then the substitutions with such a
+      matrix.
+    license: "unknown"
+    author_endorsement: "not-contacted"
+  - title: "Dynamical Invariants from Asymptotic Composants"
+    authors:
+      - "Franz Gähler"
+    id: "arXiv:2602.18501"
+    type: "article"
+    location: "https://arxiv.org/abs/2602.18501"
+    relationship: "background"
+    note: >-
+      Establishes computationally the reflection asymmetry of
+      plastic-number substitution tiling spaces; the Padovan rule
+      appears, up to letter renaming and reflection, as the class-7
+      representative in Table 2. Compared statement 5 is a
+      factor-language statement about the iterates of the Padovan rule
+      and its mirror, proved by a different, enumeration-free method (the
+      successor invariant: every a in a positive iterate is followed by
+      b); no tiling-space statement is made.
+    license: "unknown"
+    author_endorsement: "not-contacted"
+  - title: "Reversing and extended symmetries of shift spaces"
+    authors:
+      - "Michael Baake"
+      - "John A. G. Roberts"
+      - "Reem Yassawi"
+    id: "Discrete and Continuous Dynamical Systems A 38 (2018), 835-866"
+    type: "article"
+    location: "https://doi.org/10.3934/dcds.2018036"
+    relationship: "background"
+    note: >-
+      Published examples of substitution languages not closed under
+      reversal (Example 2), and the distinction between language
+      chirality and the existence of a reversor for the shift. Compared
+      statement 5 is about factors of iterates only; no reversor
+      statement is made.
+    license: "unknown"
+    author_endorsement: "not-contacted"
+
+related_formalizations:
+  - id: "Registered entry PALOMAR-2026-08-19-000006 (stalex444/arithmetic-of-time, registered revision c48eb12817dd1d7ff3dc4d92306c7a4f249e6d7d)"
+    relationship: "other"
+    note: >-
+      COMPANION ENTRY. Its compared statements are the successor
+      invariant, the chirality pair and the absence of long palindromic
+      factors for the Padovan substitution. The Padovan half of compared
+      statement 5 here is its compared chirality statement, restated over
+      sub s; the mirror half and statements 1-4 are not compared there.
+      The proof modules Chirality, Irreducibility and Settling are that
+      revision's files with the module-system header (module / public
+      import / @[expose] public section) the registry now requires, and
+      one proof repair in Irreducibility (quartic_irred_zmod2, linear
+      case: simp no longer closes the goal at this toolchain; the simp
+      call drops neg_add_cancel and zero_mul and is followed by
+      `exact mul_eq_zero_of_left (neg_add_cancel a) _`), statement
+      unchanged. The README's Scope section is that entry's, verbatim;
+      its one relative link, to the paper directory, now points into the
+      companion repository at the registered revision.
+  - id: "Registered entry PALOMAR-2026-08-31-000004 (stalex444/mahler-measure-minima, registered revision ca3df22ba91ce60e5199aee4a0c35a6ca8ee559d)"
+    relationship: "other"
+    note: >-
+      PROOF-MODULE REUSE, NOT COMPARED CONTENT. The minimal Mahler
+      measures in degrees 2 and 3 (PDT.Mahler.quadratic_mahler_min',
+      PDT.Mahler.cubic_mahler_min') are the engine of compared statement
+      4 and hence of the bound in statement 1. The seven modules
+      PdtMahler, PdtMahlerBox, PdtMahlerMain, PdtMahlerTheta,
+      PdtMahlerWindow, PdtPisotBoundary and PdtIrreducible are that
+      revision's files with every statement and proof unchanged apart
+      from the module-system header and, in PdtIrreducible, the same
+      proof repair in quartic_irred_zmod2; PdtMahler, PdtMahlerMain,
+      PdtMahlerTheta and PdtMahlerWindow also carry docstring edits that
+      remove internal cross-references of the author's working notes.
+      None of that entry's statements is re-compared here.
+  - id: "https://github.com/stalex444/pdt-lean (parent development; pinned reference revision: commit 34f7b0a8238c3260d73086d2a7e1f7d086f897d7)"
+    relationship: "other"
+    note: >-
+      The public project this entry belongs to. This repository is a
+      complete, self-contained proof development for the compared
+      statements, with no imports from the parent. The modules
+      PdtIrreducible, PdtPisotBoundary and the five PdtMahler modules also
+      appear in the parent at the pinned revision; SlowestClock and
+      PdtMirrorTensor appear neither there nor in either registered entry.
+  - id: "https://github.com/leanprover-community/mathlib4 (Matrix.charpoly, Polynomial.aeval, minpoly, Polynomial.aroots, Polynomial.natDegree, IsIntegral, Polynomial.mahlerMeasure, Nat.iterate)"
+    relationship: "builds-on"
+    note: >-
+      The compared statements use Mathlib and core Lean vocabulary plus
+      four short definitions in Challenge.lean (s, mir, inc, sub), each a
+      one-line list or matrix construction stated in full there and
+      repeated verbatim in Solution.lean. The pinned source of the
+      imported definitions the statements rest on (Matrix.charmatrix and
+      Matrix.charpoly, Polynomial.eval₂ and Polynomial.aeval, minpoly,
+      Polynomial.roots and Polynomial.aroots, Polynomial.degree and
+      Polynomial.natDegree, IsIntegral, the norm on ℂ, Nat.iterate, and
+      core Lean's List.IsInfix, List.countP and List.count) is quoted
+      verbatim, with permalinks, in MATHLIB_DEFINITIONS.md; the remaining
+      vocabulary (List.map, List.reverse, List.flatten, Equiv, Matrix.map,
+      Fin, the !![…] notation) is standard and is not quoted.
+      DefinitionAudit.lean kernel-checks the facts the statements rely on.
+      Mathlib contains no Pisot theory at the pin, so Siegel's theorem is
+      not in Mathlib; the Mahler-measure route uses Mathlib's
+      Polynomial.mahlerMeasure.
+
+status:
+  scope: >-
+    Formalized: five compared theorems, in comparator order, namespace
+    ArithmeticOfTime. Notation: s is the Padovan rule 0 ↦ [1], 1 ↦ [2],
+    2 ↦ [0, 1] on Fin 3; mir σ x = (σ x).reverse; inc σ i j = count of i
+    in σ j, as an integer matrix; sub σ w = (w.map σ).flatten; "u is a
+    factor of w" is u <:+: w (List.IsInfix). (1) padovan_minimal_unique:
+    for k ≤ 3, σ : Fin k → List (Fin k), real θ with
+    aeval θ (inc σ).charpoly = 0, 1 < θ, every z in
+    (minpoly ℚ θ).aroots ℂ other than θ of norm < 1, and real ρ with
+    ρ³ = ρ + 1: ρ ≤ θ, and θ = ρ iff there is e : Fin k ≃ Fin 3 with
+    (σ x).map e = s (e x) for all x, or (σ x).map e = mir s (e x) for
+    all x. (2) padovan_eigenvalue_unique: the same equivalence for k ≤ 3
+    and any real θ with aeval θ (inc σ).charpoly = 0 and ρ³ = ρ + 1, with
+    no Pisot hypothesis and no 1 < θ. (3) padovan_matrix_unique: a matrix
+    M : Matrix (Fin 3) (Fin 3) ℕ whose integer cast has characteristic
+    polynomial X³ − X − 1 satisfies M i j = !![0,0,1; 1,0,1; 0,1,0]
+    (e i) (e j) for some e : Fin 3 ≃ Fin 3. (4) pisot_ge_plastic: a real
+    θ with 1 < θ, IsIntegral ℤ θ, (minpoly ℚ θ).natDegree ≤ 3 and every
+    other root in (minpoly ℚ θ).aroots ℂ of norm < 1 satisfies ρ ≤ θ for
+    any real ρ with ρ³ = ρ + 1. (5) padovan_rules_chiral: [2, 0] is a
+    factor of (sub s)^[5] [0] and, for all n and x, [0, 2] is not a
+    factor of (sub s)^[n] [x]; [0, 2] is a factor of (sub (mir s))^[5] [0]
+    and, for all n and x, [2, 0] is not a factor of (sub (mir s))^[n] [x].
+    Proved in the repository, not compared: padovan_pisot_eigenvalue
+    (Supplement.lean: for ρ³ = ρ + 1, ρ is a root of
+    (inc s).charpoly, 1 < ρ, and every root of minpoly ℚ ρ other than ρ
+    has norm < 1, so the bound of (1) is attained); and the definition
+    audit (DefinitionAudit.lean, imports Mathlib only). Not formalized:
+    Siegel's theorem in degree above 3; the case of substitutions on
+    four or more letters; any subshift-, tiling-space- or
+    reversor-level statement. No compared statement is a physical claim.
+  sorry_count: 0
+  sorry_in_definitions: 0
+  axioms: ["propext", "Classical.choice", "Quot.sound"]
+  # Every compared theorem's #print axioms output is exactly
+  # [propext, Classical.choice, Quot.sound] (BUILD.txt).
+
+automation:
+  methods:
+    - method: "agent"
+      models: ["Anthropic Claude (Opus-class, 2026)"]
+      framework: "Claude Code"
+      tool_setup: >-
+        AI-assisted proof drafting, porting and error-loop iteration
+        against lake build. The proof modules are copied from the author's
+        earlier packages (provenance in BUILD.txt and above); this
+        package's Challenge, Solution, Supplement and DefinitionAudit
+        modules were written for this entry and kernel-checked with the
+        axiom audit recorded in BUILD.txt.
+      cost:
+        wall_time: "part-time sessions across the development; this package assembled in one session on 2026-10-17"
+        spend_usd: "subscription-based"
+        hardware: "local machine, Apple silicon"
+      prompting_notes: >-
+        Statements fixed by the author first; proofs iterated against the
+        compiler; the package's statements are verbatim copies of the
+        development's, proved here by direct transfer.
+    - method: "manual"
+      models: []
+      framework: "n/a"
+      tool_setup: >-
+        Author-directed statement design, mathematical review and
+        acceptance of every theorem; statements audited by the author
+        against their informal descriptions.
+      cost:
+        wall_time: "included in the sessions above"
+        spend_usd: "not tracked"
+        hardware: "local machine"
+      prompting_notes: "n/a"
+  spend_usd: "subscription-based"
+  notes: >-
+    Human-directed, machine-verified workflow: the author fixes statements
+    and reviews all mathematics; AI assistance drafts and repairs proofs;
+    the Lean kernel is the acceptance criterion.
+
+fidelity:
+  divergences: >-
+    (a) Statement 4 is Siegel's theorem restricted to degree at most 3,
+    proved through the registered minimal Mahler measures of
+    PALOMAR-2026-08-31-000004 (a Pisot number equals the Mahler measure
+    of its minimal polynomial, Time.Clock.mahler_eq_of_pisot), not by
+    Siegel's argument; the result is classical. (b) In statements 1, 2
+    and 4 the plastic number enters hypothesis-style, as any real ρ with
+    ρ³ = ρ + 1 (that equation has exactly one real solution:
+    DefinitionAudit.plastic_exists_unique); "Pisot" is spelled
+    in-statement through minpoly ℚ θ and its complex roots
+    (DefinitionAudit.mem_aroots_minpoly, aroots_minpoly_nodup); in
+    statement 1, algebraic integrality of θ is not a hypothesis, since θ
+    is a root of the monic integer polynomial (inc σ).charpoly
+    (DefinitionAudit.isIntegral_of_aeval_charpoly), and "θ is an
+    eigenvalue" is spelled aeval θ (inc σ).charpoly = 0, equivalent to
+    the existence of a nonzero real eigenvector
+    (DefinitionAudit.aeval_charpoly_eq_zero_iff). (c) Renaming the letters
+    is an equivalence e : Fin k ≃ Fin 3 applied letterwise, so the
+    equality case forces k = 3; "the Padovan rule or its mirror" is the
+    disjunction of the two letterwise conjugacies. (d) Statement 1 gives
+    the bound and the equality case; that ρ is attained, as a Pisot
+    eigenvalue of the Padovan matrix, is padovan_pisot_eigenvalue in
+    Supplement.lean, proved and not compared. (e) Statement 5 is at the
+    iterate-factor level: it quantifies over factors of the concrete words
+    (sub s)^[n] [x] and (sub (mir s))^[n] [x], not over an abstract
+    subshift or tiling space; its positive halves are single witnesses at
+    the seed 0 and depth 5. (f) Four definitions appear on the compared
+    surface (s, mir, inc, sub), each a one-line construction, identical in
+    Challenge.lean and Solution.lean. (g) Module provenance is recorded
+    in BUILD.txt and in related_formalizations; no copied module's
+    statement was changed, and relative to the registered revisions the
+    only proof change is the repair of one simp step in
+    quartic_irred_zmod2, in Irreducibility and PdtIrreducible. (h) The physical
+    reading in the README's Scope section is an identification, stated
+    there as one; it is not a theorem and no compared statement asserts
+    it.
+
+review:
+  status: "self-assessed"
+  reviewers:
+    - "Stephanie Alexander"
+  notes: >-
+    Statements audited by the author against the informal claims; the
+    package was built from an empty build directory (Mathlib from the
+    prebuilt cache at the pinned revision), the axioms of every
+    compared declaration and every definition-audit theorem were printed,
+    the Challenge and Solution statements were checked identical, and
+    every quoted definition was byte-checked against the pinned upstream
+    sources (BUILD.txt), and an in-house adversarial mock-referee pass
+    (AI-assisted: Anthropic Claude, in Claude Code, under the author's
+    direction) was applied to this surface before submission.
+
+alignment:
+  namespace: "ArithmeticOfTime"
+  statements:
+    - source: "This work; Siegel 1944 (the bound, degree ≤ 3); uniqueness observed without proof by Mercat 2020"
+      lean: "ArithmeticOfTime.padovan_minimal_unique"
+      module: "Solution"
+      status: "proved"
+      note: >-
+        On k ≤ 3 letters, a Pisot eigenvalue θ > 1 of the incidence matrix
+        satisfies ρ ≤ θ, with equality iff the substitution is the Padovan
+        rule or its mirror after renaming the letters.
+    - source: "This work; uniqueness observed without proof by Mercat 2020"
+      lean: "ArithmeticOfTime.padovan_eigenvalue_unique"
+      module: "Solution"
+      status: "proved"
+      note: "The same classification for every real eigenvalue, with no Pisot hypothesis."
+    - source: "This work"
+      lean: "ArithmeticOfTime.padovan_matrix_unique"
+      module: "Solution"
+      status: "proved"
+      note: >-
+        A 3 × 3 natural matrix with characteristic polynomial x³ − x − 1 is
+        the Padovan matrix after one simultaneous permutation of rows and
+        columns.
+    - source: "Siegel, Duke Math. J. 11 (1944), restricted to degree ≤ 3"
+      lean: "ArithmeticOfTime.pisot_ge_plastic"
+      module: "Solution"
+      status: "proved"
+      note: "Proved through the registered Mahler minima of PALOMAR-2026-08-31-000004; classical, not new."
+    - source: "This work; the Padovan half is the compared chirality statement of PALOMAR-2026-08-19-000006"
+      lean: "ArithmeticOfTime.padovan_rules_chiral"
+      module: "Solution"
+      status: "proved"
+      note: >-
+        Under the Padovan rule ca occurs in an iterate from the seed a and
+        ac in no iterate from any seed; under its mirror, the reverse.
+
+acknowledgements: >-
+  Built on Mathlib and the Lean 4 toolchain; thanks to the leanprover
+  community. Developed with AI assistance (Anthropic Claude, in Claude
+  Code) under the author's direction. Dedicated to the memory of David N.
+  Schramm.
